@@ -11,7 +11,9 @@ import { useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../../../environment.js";
+import { surveyState } from "../../context/survey.provider.jsx";
 const SubmitSurvey = () => {
+  const { fetchAgain, setFetchAgain } = surveyState();
   const history = useNavigate();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -58,7 +60,6 @@ const SubmitSurvey = () => {
         { name, email, gender, contact, address, message, nationality },
         config
       );
-      console.log(data);
       if (data.success) {
         toast({
           title: "Form submitted successfully.",
@@ -69,7 +70,7 @@ const SubmitSurvey = () => {
         });
         localStorage.setItem("userInfo", JSON.stringify(data.token));
         setLoading(false);
-        history("/survey");
+        setFetchAgain(!fetchAgain);
       }
     } catch (err) {
       toast({

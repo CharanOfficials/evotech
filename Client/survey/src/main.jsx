@@ -6,6 +6,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import Survey from "./pages/Survey.jsx";
+import SurveyProvider from "./context/survey.provider.jsx";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +26,9 @@ const Router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider>
-      <RouterProvider router={Router} />
+      <SurveyProvider>
+        <RouterProvider router={Router} />
+      </SurveyProvider>
     </ChakraProvider>
   </React.StrictMode>
 );

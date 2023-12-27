@@ -20,4 +20,7 @@ router.post("/survey", (req, res) => {
 router.post("/logout", (req, res) => {
   userController.postLogout(req, res);
 });
+router.get("/surveys", (req, res) => {
+  surveyController.surveys(req, res);
+});
 export default router;

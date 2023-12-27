@@ -55,4 +55,16 @@ export default class SurveyController {
       });
     }
   }
+  async surveys(req, res) {
+    try {
+      const surveys = await SurveyForm.find({});
+      res.status(200).json({ success: true, data: surveys });
+    } catch (err) {
+      console.log("Error while getting all the surveys", err);
+      return res.status(500).json({
+        success: false,
+        message: "Internal server error.",
+      });
+    }
+  }
 }

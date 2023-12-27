@@ -1,7 +1,7 @@
 import React from "react";
 import SubmitSurvey from "../components/survey/SubmitSurvey";
 import { Box } from "@chakra-ui/react";
-import SurveyList from "../components/survey/SurveyList";
+import SurveyContainer from "../components/survey/ServeyContainer";
 const Survey = () => {
   return (
     <>
@@ -9,7 +9,7 @@ const Survey = () => {
         <SubmitSurvey />
       </Box>
       <Box w={"40%"} ml={"2%"}>
-        <SurveyList />
+        <SurveyContainer />
       </Box>
     </>
   );
