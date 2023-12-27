@@ -1,8 +1,11 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Create One MongoDB Url
+Create .env file inside the server folder and add DB_URL, JWT_SECRET variables in it  
+Clone the repository: git clone https://github.com/CharanOfficials/evotech/
+Go to Server folder: cd .\Server\
+Install packages: npm i
+Run backend: node server.js
+Come out of the Server folder: cd..
+Go to Client folder: cd .\Client\
+Go to survey folder: cd '\survey\
+Install required packages: npm i
+Run frontend server: npm run dev
