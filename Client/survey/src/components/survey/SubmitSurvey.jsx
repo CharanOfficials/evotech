@@ -5,6 +5,8 @@ import {
   FormLabel,
   Input,
   VStack,
+  Stack,
+  Select,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
@@ -27,13 +29,15 @@ const SubmitSurvey = () => {
   const handleShowClick = () => {
     setShow(!show);
   };
-  const submitSurveyHandler = async () => {
+  const submitSurveyHandler = async (e) => {
     setLoading(true);
     if (
       !name ||
       !email ||
       !gender ||
       !contact ||
+      contact.length > 12 ||
+      contact.length < 10 ||
       !address ||
       !message ||
       !nationality
@@ -70,6 +74,7 @@ const SubmitSurvey = () => {
         });
         localStorage.setItem("userInfo", JSON.stringify(data.token));
         setLoading(false);
+        e.target.reset();
         setFetchAgain(!fetchAgain);
       }
     } catch (err) {
@@ -105,11 +110,16 @@ const SubmitSurvey = () => {
       </FormControl>
       <FormControl id="login-gender" isRequired>
         <FormLabel>Gender</FormLabel>
-        <Input
-          placeholder="Enter Your Gender male/female"
+        <Select
+          placeholder="Select option"
+          variant={"filled"}
           value={gender}
           onChange={(e) => setGender(e.target.value)}
-        />
+        >
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </Select>
       </FormControl>
       <FormControl id="login-contact" isRequired>
         <FormLabel>Contact</FormLabel>
@@ -149,7 +159,7 @@ const SubmitSurvey = () => {
         width="100%"
         mt="1.5rem"
         isLoading={loading}
-        onClick={submitSurveyHandler}
+        onClick={(e) => submitSurveyHandler(e)}
       >
         Submit Survey
       </Button>

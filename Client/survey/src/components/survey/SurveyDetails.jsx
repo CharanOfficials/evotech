@@ -12,14 +12,16 @@ const SurveyDetails = () => {
       const { data } = await axios.get(`${url}/survey/${selectedSurvey}`);
       setSurvey(data.data);
     };
-    getSurvey();
+    if (selectedSurvey) {
+      getSurvey();
+    }
   }, [selectedSurvey]);
   return (
-    <Box ml={"2rem"}>
+    <Box mt={"1.2rem"} ml={"2rem"}>
       <Box textAlign={"center"} fontSize={"1.5rem"}>
         SURVEY DETAIL
       </Box>
-      <Box mt={"1rem"}>
+      <Box mt={"1rem"} height={"15rem"} overflow={"scroll"}>
         <Box>Name: {survey.name}</Box>
         <Box>Email: {survey.email}</Box>
         <Box>Gender: {survey.gender}</Box>

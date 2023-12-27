@@ -13,7 +13,7 @@ import { surveyState } from "../../context/survey.provider";
 
 const SurveyList = () => {
   const [surveys, setSurveys] = useState([]);
-  const { fetchAgain, setSelectedSurvey } = surveyState();
+  const { fetchAgain, setSelectedSurvey, selectedSurvey } = surveyState();
   useEffect(() => {
     const url = BACKEND_URL;
     const fetchSurveys = async () => {
@@ -33,16 +33,18 @@ const SurveyList = () => {
       <OrderedList
         cursor={"pointer"}
         overflow={"scroll"}
-        h={"18rem"}
+        maxHeight={"12rem"}
         ml={"2rem"}
       >
         {surveys.map((survey) => (
-          <Box
-            key={survey._id}
-            p={"0.2rem"}
-            onClick={() => handleClick(survey._id)}
-          >
-            <ListItem>
+          <Box key={survey._id} onClick={() => handleClick(survey._id)}>
+            <ListItem
+              borderBottom={"1px"}
+              padding={"0.5rem"}
+              style={{
+                background: selectedSurvey === survey._id ? "#F1DEDE" : "white",
+              }}
+            >
               <Box fontSize={"1.1rem"}>Name: {survey.name}</Box>
               <Box fontSize={"0.7rem"}>Contact No.: {survey.contactNo}</Box>
             </ListItem>
